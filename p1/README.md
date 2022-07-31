@@ -1,16 +1,3 @@
-
-Conversation ouverte. 1 message non lu.
-
-Aller au contenu
-Utiliser Gmail avec un lecteur d'écran
-1 sur 5 877
-p1
-Boîte de réception
-Joep Bamentlo
-	
-19:14 (il y a 5 minutes)
-	
-À moi
 # Partie 1 : Configuration de GNS3 avec Docker
 
 Pour cette première partie, il faut configurer GNS3 et docker dans notre machine virtuelle.
