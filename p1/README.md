@@ -53,14 +53,15 @@ IS-IS (Intermediate system to intermediate system) est un protocole de routage i
 ```bash
 ./setup.sh
 ```
-- create image "router_dberger":
-From "frrouting/frr" (containing all the services needed for the exercise) + services BGP, OSPF and ISIS on
+What this setup does:
+- pulls image "router_dberger":
+Initially created from "frrouting/frr" (containing all the services needed for the exercise) + services BGP, OSPF and ISIS on
 
-- pull alpine image:
-change name to "host_dberger"
+- pulls alpine image
 
-- launch GNS3:
-add the images as devices and change the router_dberger template symbol to router_switch_processor
+launch the p1 projiect on GNS3:
+You should see a host_dberger and router_dberger able to run
+launch them and change the ip addresses with this configuration:
 
 - Router config:
 ```bash
@@ -72,8 +73,6 @@ int lo
 ip addr 1.1.1.1/32
 int eth0
 ip addr 10.1.1.1/30
-int eth1
-ip addr 11.1.1.1/30
 router ospf
 network 0.0.0.0/0 are 0
 router isis 1
@@ -81,8 +80,6 @@ net 49.0000.0000.0001.00
 int lo
 ip router isis 1
 int eth0
-ip router isis 1
-int eth1
 ip router isis 1
 ```
 

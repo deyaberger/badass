@@ -1,8 +1,0 @@
-ps
-vtysh
-conf t
-sh int
-do sh ip ospf neighbor
-do sh ip route
-do sh isis int
-do sh isis neighbor
