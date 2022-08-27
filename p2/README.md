@@ -3,53 +3,37 @@ ip -d link show vxlan10
 ip -d link show eth1
 To open whiteshark: right click on top left link and "start capture"
 brctl show
-# Partie 1 : Configuration de GNS3 avec Docker
 
-Pour cette première partie, il faut configurer GNS3 et docker dans notre machine virtuelle.
-Il faut ensuite creer deux images docker:
-- Une première image avec un système de notre choix contenant au minimum busybox (nous avons choisit Alpine)
-- Une seconde image utilisant un système de notre choix avec les contraintes suivantes :
-• Un logiciel qui gère le routage de paquets (zebra ou quagga).
-• Le service BGPD actif et configuré.
-• Le service OSPFD actif et configuré
-• Un service de moteur de routage IS-IS.
-• Busybox ou une équivalance
 
-Enfin, aucune adresse IP ne doit etre configuree par defaut.
+# Partie 2 : Découverte d’un VXLAN
 
-Il faut utiliser les deux images docker dans GNS3 et realiser le schema du sujet et s'y connectant.
+Pour cette deuxieme partie, il s'agit de mettre en place notre premier reseau VXLAN, en dynamique puis en multicast.
+Il faudra: un switch, deux routeur et deux hosts.
+
+Il faut configurer ce réseau en utilisant un VXLAN avec pour ID 10, et un nom au choix.
+Il faut mettre en place un bridge: br0.
+Il faut aussi configurer les interfaces ethernet comme on le souhaite.
 
 
 Notions:
 
-## GNS3 :
-GNS3 (Graphical Network Simulator) est un logiciel libre permettant la simulation de réseaux informatiques.
+## VLAN :
+Un VLAN, pour Virtual Local Area Network, décrit un type de réseau local. On le traduit en français par réseau local virtuel.
+Le VLAN regroupe, de façon logique et indépendante, un ensemble de machines informatiques. On peut en retrouver plusieurs coexistant simultanément sur un même commutateur réseau
 
-## Docker :
-Docker est une plateforme permettant de lancer certaines applications dans des conteneurs logiciels.
-(C'est ce qui va nous permettre de simuler l'existence d'un ordi ou d'un routeur dans notre projet)
+## VXLAN :
+Pareil que pour le VLAN, a la difference que le VXLAN propose jusqu'a 16 millions d'identifiants  possibles contre seulement 4094 pour le VLAN
 
-## Busybox :
-BusyBox est un logiciel qui implémente un grand nombre des commandes standard sous Unix, à l'instar des GNU Core Utilities.
+## Switch :
+Un switch Ethernet se présente sous la forme d’un boîtier doté de ports Ethernet RJ45. Cette solution matérielle assure ainsi la communication, la réception et la redistribution de messages, entre les différents ordinateurs et serveurs d’un même réseau. Contrairement à un hub, le switch opte pour une répartition « intelligente » de l’information. En se basant sur une table d’adressage (adresse MAC et port), il va ainsi redistribuer l’information uniquement aux appareils informatiques concernés. À l’inverse, un hub transmet la donnée à l’ensemble des appareils actifs sur le réseau local.
 
-## Alpine :
-Alpine Linux est une distribution Linux ultra-légère, orientée sécurité et basée sur Musl (en) et BusyBox, principalement conçue pour un « utilisateur intensif qui apprécie la sécurité, la simplicité et l'efficacité des ressources ».
-(Donc tres pratique pour faire des tests, plutot que de prendre une image Ubuntu par exemple)
+## Bridge :
+Un pont permet de connecter un réseau local (LAN) à un autre réseau local utilisant le même protocole.
+Un pont examine chaque message d'un LAN, de façon à transmettre ceux qui s'adressent au même LAN et à faire suivre ceux qui sont destinés à un ou plusieurs autres LAN interconnectés.
 
-## Routage de paquets :
-Le routage réseau est le processus de sélection d'un chemin à travers un ou plusieurs réseaux.
-Le paquet est l'unité de données qui est acheminée entre une origine et une destination sur un réseau.
-Les routeurs se réfèrent à des tables de routage internes pour prendre des décisions d'acheminement des paquets le long des chemins du réseau.
 
-## BGP:
-Border Gateway Protocol (BGP) est un protocole d'échange de route externe (un EGP), utilisé notamment sur le réseau Internet. Son objectif principal est d'échanger des informations de routage et d'accessibilité de réseaux (appelés préfixes) entre Autonomous Systems (AS).
-
-## OSPF:
-Open Shortest Path First (OSPF) est un protocole de routage interne IP de type « à état de liens ».
-
-## ISIS :
-IS-IS (Intermediate system to intermediate system) est un protocole de routage interne multi-protocoles à états de lien.
-
+## Static vs Dynamique Multicast : 
+Static routing uses preconfigured routes to send traffic to its destination, while dynamic routing uses algorithms to determine the best path.
 
 
 # Configuration:
