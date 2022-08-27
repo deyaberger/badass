@@ -98,6 +98,9 @@ do sh ip route
 ip addr add 10.1.1.2/30 dev eth0
 ip addr add 1.1.1.2/30 dev lo
 ```
+```
+ifconfig
+```
 	
 	
 	
