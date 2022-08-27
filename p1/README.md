@@ -101,6 +101,11 @@ ip addr add 1.1.1.2/30 dev lo
 ```
 ifconfig
 ```
+
+To check which services are activated, do the folloing command in the auxiliary console:
+```
+ps
+```
 	
 	
 	
