@@ -39,56 +39,56 @@ Static routing uses preconfigured routes to send traffic to its destination, whi
 # Configuration:
 
 ## 1 - Setup:
-```bash
-./setup.sh
+Start all machines
+copy paste config lines in each hosts
+
+## 2 - Static configuration:
+Configure each routers with the lines corresponding to the static setup.</br>
+example for router1:
 ```
-What this setup does:
-- pulls image "router_dberger":
-Initially created from "frrouting/frr" (containing all the services needed for the exercise) + services BGP, OSPF and ISIS on
-
-- pulls alpine image
-
-launch the p1 projiect on GNS3:
-You should see a host_dberger and router_dberger able to run
-launch them and change the ip addresses with this configuration:
-
-- Router config:
-```bash
-vtysh
-```
-```vtysh
-conf t
-int lo
-ip addr 1.1.1.1/32
-int eth0
-ip addr 10.1.1.1/30
-router ospf
-network 0.0.0.0/0 are 0
-router isis 1
-net 49.0000.0000.0001.00
-int lo
-ip router isis 1
-int eth0
-ip router isis 1
+ip link add br0 type bridge
+ip link set dev br0 up
+ip addr add 10.1.1.1/24 dev eth0
+# STATIC CONFIG:
+ip link add name vxlan10 type vxlan id 10 dev eth0 remote 10.1.1.2 local 10.1.1.1 dstport 4789
+ip addr add 20.1.1.1/24 dev vxlan10
+brctl addif br0 eth1
+brctl addif br0 vxlan10
+ip link set dev vxlan10 up
 ```
 
 To see the results:
 ```
-vtysh
+ip -d link show vxlan10
+ip link show vxlan10
+ip link show eth1
 ```
+Start capture and launch whiteshark
+then in one of the host, try to ping the other host:
+Ex: in Host 2:
 ```
-do sh int
-do sh isis int
-do sh ip ospf int
-do sh ip route
+ping 30.1.1.1
 ```
-- configure host:
-```
-ip addr add 10.1.1.2/30 dev eth0
-ip addr add 1.1.1.2/30 dev lo
-```
-	
-	
-	
+You should see the ping working and the communication passing from 30.1.1.2 to 30.1.1.1 thanks to the vxlan encapsulation
 
+## 3 - Dynamic Multicast:
+
+Turn off and on the two routers and redo the configuration, this time dynamically:
+Ex for router1:
+```
+ip link add br0 type bridge
+ip link set dev br0 up
+ip addr add 10.1.1.1/24 dev eth0
+# Dynamic configuration:
+ip link add name vxlan10 type vxlan id 10 dev eth0 group 239.1.1.1 dstport 4789
+ip addr add 20.1.1.1/24 dev vxlan10
+brctl addif br0 eth1
+brctl addif br0 vxlan10
+ip link set dev vxlan10 up
+```
+
+Usefull command for routers:
+```
+brctl show
+```
 
