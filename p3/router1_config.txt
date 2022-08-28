@@ -27,5 +27,8 @@ address-family l2vpn evpn
 exit-address-family
 !
 router ospf
+ network 0.0.0.0/0 area 0
+!
+line vty
 !
 
