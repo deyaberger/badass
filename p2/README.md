@@ -90,5 +90,6 @@ ip link set dev vxlan10 up
 Usefull command for routers:
 ```
 brctl show
+brctl showmacs br0
 ```
 
