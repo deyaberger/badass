@@ -1,5 +1,10 @@
 # Part 3: Decouverte de BGP avec EVPN
 
+usefull commands:
+do sh ip route
+do sh bgp summary
+do sh bgp l2vpn evpn
+
 ## BGP-EVPN
 
 
