@@ -1,0 +1,316 @@
+# **************************************************************************** #
+#                                                                              #
+#                                Hacky tricks Should be removed                #
+#                                                                              #
+# **************************************************************************** #
+
+#name: Glitch
+#is_primary: true
+#lg: 'en'
+#correction_number: 5
+#duration: 10
+#flag_ids: []
+
+# **************************************************************************** #
+#                                                                              #
+#                                /Hacky tricks                                 #
+#                                                                              #
+# **************************************************************************** #
+
+comment: ''
+introduction_md: |
+  Please comply with the following rules:
+
+  - Remain polite, courteous, respectful and constructive throughout the 
+    evaluation process. The well-being of the community depends on it.
+
+  - Identify with the student or group whose work is evaluated the possible 
+    dysfunctions in their project. Take the time to discuss and debate the 
+    problems that may have been identified.
+
+  - You must consider that there might be some differences in how your peers 
+    might have understood the project's instructions and the scope of its 
+    functionalities. Always keep an open mind and grade them as honestly as 
+    possible. The pedagogy is useful only and only if the peer-evaluation is 
+    done seriously.
+
+
+disclaimer_md: ''
+
+guidelines_md: |
+  - Only grade the work that was turned in the Git repository of the evaluated 
+    student or group.
+
+  - Double-check that the Git repository belongs to the student(s). Ensure that 
+    the project is the one expected. Also, check that 'git clone' is used in an 
+    empty folder.
+
+  - Check carefully that no malicious aliases was used to fool you and make you 
+    evaluate something that is not the content of the official repository.
+
+  - To avoid any surprises and if applicable, review together any scripts used 
+    to facilitate the grading (scripts for testing or automation).
+
+  - If you have not completed the assignment you are going to evaluate, you have 
+    to read the entire subject prior to starting the evaluation process.
+
+  - Use the available flags to report an empty repository, a non-functioning 
+    program, a Norm error, cheating, and so forth. 
+    In these cases, the evaluation process ends and the final grade is 0, 
+    or -42 in case of cheating. However, except for cheating, student are 
+    strongly encouraged to review together the work that was turned in, in order 
+    to identify any mistakes that shouldn't be repeated in the future.
+
+sections:
+
+- name: Preliminaries
+  description: "If cheating is suspected, the evaluation stops here. Use the 
+    \"Cheat\" flag to report it. Take this decision calmly, wisely, and please, 
+    use this button with caution."
+  questions:
+  - name: Preliminary tests
+    guidelines: |
+        - Defense can only happen if the evaluated student or group is present. 
+          This way everybody learns by sharing knowledge with each other.
+        - If no work has been submitted (or wrong files, wrong directory, or 
+          wrong filenames), the grade is 0, and the evaluation process ends.
+        - For this project, you have to clone their Git repository on their 
+          station.
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 0
+      name: Rigor
+
+# **************************************************************************** #
+#                                                                              #
+#                                General instructions                          #
+#                                                                              #
+# **************************************************************************** #
+
+
+- name: Consignes générales
+  description: ""
+  questions:
+  - name: General guidelines
+    guidelines: |
+        - During the defense, whenever you need help to verify a point, someone from the 
+        group being evaluated should be able to help you..
+        - Check that all the files needed to configure the application are stored in the 
+        folders P1, P2 and P3. These folders must be located in the root of the repository.
+        - Run GNS3 now.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 0
+      name: Rigor
+
+
+## **************************************************************************** #
+#                                                                              #
+#                                Mandatory part sur 5                          #
+#                                                                              #
+# **************************************************************************** #
+- name: Mandatory part
+
+  description: |
+    The project consists in setting up several infrastructures with different 
+    constraints.
+    Make sure that all of the following points are met.
+  questions:
+
+
+  - name: Project overview
+
+    guidelines: |
+        - A person from the group being evaluated should explain simply:
+          - The basic functioning of GNS3.
+          - The global operation and the interest of BGP.
+          - The differences between layer 2 and layer 3 in a network.
+
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 5
+      name: Network & system administration
+    - percentage: 5
+      name: Rigor
+
+# **************************************************************************** #
+#                                                                              #
+#                                Partie 1 sur 15                               #
+#                                                                              #
+# **************************************************************************** #
+
+  - name: Part 1 - Theory
+
+    guidelines: |
+        - A person from the group being evaluated should explain simply:
+            - What is a packet routing software.
+            - What is the BGPD service requested in the subject.
+            - What is the OSPFD service requested in the topic.
+            - What is the routing engine service requested in the topic.
+            - What is Busybox asked in the subject.
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 5
+      name: Network & system administration
+    - percentage: 5
+      name: Rigor
+
+  - name: Part 1 - Practice
+
+    guidelines: |
+        - A person from the group being evaluated should simply show you with explanations:
+            - How to set up the docker images requested in the topic.
+              A small explanation of each image is expected.
+            - How to import docker images into GNS3.
+            - How to activate these imported machines in GNS3.
+            - How to access these machines in GNS3.
+            - Show that the services requested by the subject are active in these 
+            active machines.
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 10
+      name: Network & system administration
+    - percentage: 10
+      name: Rigor
+
+
+# **************************************************************************** #
+#                                                                              #
+#                                Partie 2 sur 30                               #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+  - name: Part 2 - Theory
+
+    guidelines: |
+        - A person from the group being evaluated should explain simply:
+            - What is a VXLAN and the differences with a VLAN.
+            - What is a switch encountered in the subject.
+            - What is a bridge encountered in the subject.
+            - The differences between broadcast and multicast.
+            - The expected operation of the topology indicated in the subject.
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 10
+      name: Network & system administration
+    - percentage: 10
+      name: Rigor
+
+  - name: Part 2 - Practice - static
+
+    guidelines: |
+        - A person from the group being evaluated should simply show you with explanations:
+            - The configuration files to set up this part.
+            - How to import project 2 into GNS3.
+            - How to run these imported machines in GNS3.
+            - How to configure all the machines planned in the topology of the subject.
+            - Everything must work properly. A simple ping must be used as indicated in the subject. 
+            A packet inspection is mandatory. A return close to the example given in 
+            the subject is expected here.
+            - The VXLAN ID must be set to 10.
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 10
+      name: Network & system administration
+    - percentage: 10
+      name: Rigor
+
+  - name: Part 2 - Practice - group
+
+    guidelines: |
+        - A person from the group being evaluated should simply show you with explanations:
+            - The configuration files to set up this part.
+            - How to configure all the machines planned in the topology of the subject..
+            - Everything must work properly. A simple ping must be used as indicated in the subject. 
+            A packet inspection is mandatory. A return close to the example given in 
+            the subject is expected here.
+            - The VXLAN ID must be set to 10.
+            - The differences between this second subpart and the one required before. 
+            What are the advantages?
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 10
+      name: Network & system administration
+    - percentage: 10
+      name: Rigor
+# **************************************************************************** #
+#                                                                              #
+#                                Partie 3 sur 50                               #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+  - name: Part 3 - Theory
+
+    guidelines: |
+        - A person from the group being evaluated should explain simply:
+            - What is BGP-EVPN requested in the subject.
+            - The principle of road reflection requested in the subject.
+            - What VTEP means as seen in the subject.
+            - What VNI means as seen in the subject.
+            - The difference between type 2 and type 3 roads seen in the subject.
+            - The expected operation of the topology indicated in the subject.
+         If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 15
+      name: Network & system administration
+    - percentage: 15
+      name: Rigor
+
+  - name: Part 3 - Practice
+
+    guidelines: |
+        - A person from the group being evaluated should simply show you with explanations:
+            - The configuration files to set up this part.
+            - How to import project 3 into GNS3.
+            - How to run these imported machines in GNS3.
+            - How to configure all the machines in the subject topology.
+            - How to disable all HOST machines in GNS3.
+            - No type 2 roads should exist. Only type 3 roads should be shown.
+            - The learning process is well done on the VTEPs. We will have to start up a single 
+            host machine and verify that it is well recognized by our VTEPs. No IP address must be 
+            configured on this freshly activated host. A type 2 route must be visible when this host 
+            is activated.
+            - Now enable all host machines and configure IP addresses on each. 
+            - Everything must work properly. A simple ping must be used as indicated in the subject. 
+            A packet inspection is mandatory. A return close to the example given in 
+            the subject is expected here.
+            - The VXLAN ID must be set to 10.
+            - Packets using the OSPF protocol are visible.
+        If something does not work as expected, the evaluation stops here.
+
+    rating: bool
+    kind: standard
+    questions_skills:
+    - percentage: 35
+      name: Network & system administration
+    - percentage: 35
+      name: Rigor
+
+

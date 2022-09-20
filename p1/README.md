@@ -63,49 +63,20 @@ launch the p1 projiect on GNS3:
 You should see a host_dberger and router_dberger able to run
 launch them and change the ip addresses with this configuration:
 
-- Router config:
-```bash
-vtysh
-```
-```vtysh
-conf t
-int lo
-ip addr 1.1.1.1/32
-int eth0
-ip addr 10.1.1.1/30
-router ospf
-network 0.0.0.0/0 are 0
-router isis 1
-net 49.0000.0000.0001.00
-int lo
-ip router isis 1
-int eth0
-ip router isis 1
-```
-
-To see the results:
+## 2 - Devices set up:
+- Start each devices and copy paste the config files in each auxiliary console after doing :
 ```
 vtysh
 ```
+Then check the results with these usefull commands:
 ```
+ps
 do sh int
 do sh isis int
 do sh ip ospf int
 do sh ip route
 ```
-- configure host:
-```
-ip addr add 10.1.1.2/30 dev eth0
-ip addr add 1.1.1.2/30 dev lo
-```
-```
-ifconfig
-```
 
-To check which services are activated, do the folloing command in the auxiliary console:
-```
-ps
-```
 	
 	
 	
