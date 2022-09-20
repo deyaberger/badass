@@ -42,22 +42,7 @@ Static routing uses preconfigured routes to send traffic to its destination, whi
 Start all machines
 copy paste config lines in each hosts
 
-## 2 - Static configuration:
-Configure each routers with the lines corresponding to the static setup.</br>
-example for router1:
-```
-ip link add br0 type bridge
-ip link set dev br0 up
-ip addr add 10.1.1.1/24 dev eth0
-# STATIC CONFIG:
-ip link add name vxlan10 type vxlan id 10 dev eth0 remote 10.1.1.2 local 10.1.1.1 dstport 4789
-ip addr add 20.1.1.1/24 dev vxlan10
-brctl addif br0 eth1
-brctl addif br0 vxlan10
-ip link set dev vxlan10 up
-```
-
-To see the results:
+## 2 - Static config - usefull commands:
 ```
 ip -d link show vxlan10
 ip link show vxlan10
@@ -71,23 +56,9 @@ ping 30.1.1.1
 ```
 You should see the ping working and the communication passing from 30.1.1.2 to 30.1.1.1 thanks to the vxlan encapsulation
 
-## 3 - Dynamic Multicast:
+## 3 - Dynamic Multicast - usefullllle commands:
 
-Turn off and on the two routers and redo the configuration, this time dynamically:
-Ex for router1:
-```
-ip link add br0 type bridge
-ip link set dev br0 up
-ip addr add 10.1.1.1/24 dev eth0
-# Dynamic configuration:
-ip link add name vxlan10 type vxlan id 10 dev eth0 group 239.1.1.1 dstport 4789
-ip addr add 20.1.1.1/24 dev vxlan10
-brctl addif br0 eth1
-brctl addif br0 vxlan10
-ip link set dev vxlan10 up
-```
-
-Usefull command for routers:
+Turn off and on the two routers and redo the configuration, this time dynamically.
 ```
 brctl show
 brctl showmacs br0
